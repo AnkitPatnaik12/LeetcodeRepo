@@ -1,6 +1,7 @@
 class Solution {
     public boolean checkSubarraySum(int[] nums, int k) {
-         Map<Integer, Integer> hashMap = new HashMap<>(Map.of(0, 0));
+     // initialize the hash map with index 0 for sum 0
+        Map<Integer, Integer> hashMap = new HashMap<>(Map.of(0, 0));
         int sum = 0;
         for (int i = 0; i < nums.length; i++) {
             sum += nums[i];
@@ -12,6 +13,5 @@ class Solution {
                 return true;
         }
         return false;
-       
     }
 }
