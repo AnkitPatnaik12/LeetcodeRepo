@@ -1,21 +1,30 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        // Pass 1 : 
-        // Get the XOR of the two numbers we need to find
-       int ans = 0;
-       for(int i = 0; i < 32; i++) {
-        int sum = 0;
-        for(int j = 0; j < nums.length; j++) {
-            if(((nums[j] >> i) & 1) == 1) {
-                sum++;
-                sum %= 3;
+        int sum=0;
+        int p=1;
+        int a=1;
+        int count=0;
+        for(int j=0;j<32;j++)
+        {   count=0;
+            for(int i=0;i<nums.length;i++)
+            {
+                if((nums[i]&a)!=0)
+                {
+                    count++;
+                }
+                
             }
+            if(count%3!=0)
+            {
+                sum=sum+p;
+            }
+           p=p*2;
+           a=a<<1;
+           
         }
-        if(sum != 0) {
-            ans |= sum << i;
-        }
-    }
-    return ans;
+        return sum;
+      
+        
     }
     
 }
